@@ -71,6 +71,7 @@ const BatCalc = () => {
     return (
         <Card className='generic-card h-100'>
             <Card.Header className='text-center generic-card-header'>
+                
                 <h4 className='card-name'>Bat Calculator</h4>
             </Card.Header>
             <Card.Body className='text-center justify-content-center'>
@@ -84,7 +85,7 @@ const BatCalc = () => {
                 </Form>
                 <Container className='card-reply-row text-center'>
                     <Col className='pb-4'>
-                        {size.length !== 0 && <p className='reply-text'><b>{size}"</b></p>}
+                        {size.length !== 0 && <p className='reply-text'><b>{size}</b></p>}
                     </Col>
                 </Container>
                 <Row className='text-center justify-content-center'>

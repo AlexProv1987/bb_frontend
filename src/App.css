@@ -1,3 +1,7 @@
+html,body{
+  height: 100%;
+}
+
 /*HOMEPAGE CSS*/
 .main-container {
   width: 100%;
@@ -5,14 +9,7 @@
   padding-bottom: 70px;
 }
 
-.card-container {
-  padding-top: 45px;
-}
-
 /*DEATH OF ME IMG*/
-.page-break-container{
-  background-color: #a42f2c;
-}
  .page-break-svg{
   color: #a42f2c;
  }
@@ -35,6 +32,12 @@
   height: 100%;
 }
 
+#input-question{
+  padding-inline-start: 45px;
+  padding-inline-end: 70px;
+  position:relative;
+}
+
 .form{
 
   position: relative;
@@ -54,9 +57,7 @@
   position: absolute;
   right: 17px;
   top: 13px;
-  padding: 2px;
-  border-left: 1px solid #d1d5db;
-
+  padding-bottom: 10px;
 }
 
 .left-span{
@@ -101,10 +102,10 @@
 }
 @keyframes rotation {
   from {
-    transform: rotate(0deg);
+    transform: rotate(359deg);
   }
   to {
-    transform: rotate(359deg);
+    transform: rotate(0deg);
   }
 }
 /*END LOAD ICON CSS*/
@@ -209,9 +210,21 @@ footer{
   color: white;
 }
 /*END FOOTER CSS*/
-
+.page-break-container{
+  background-image: url('./imgs/Triangle.svg');
+  background-position: center;
+  background-size: cover;
+}
 /*IMAGE CSS*/
-
+.page-break-img{
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .page-break-img {
+      width: 500px;
+  }
+}
 .search-logo-img {
   width: 100%;
   height: auto;
