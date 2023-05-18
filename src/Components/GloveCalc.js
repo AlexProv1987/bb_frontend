@@ -69,9 +69,9 @@ const GloveCalc = () => {
           <Row className='text-center justify-content-center input-row-bottom '>
             <select value={position} onChange={HandleSelect} className="form-control form-select text-center text-light card-input w-50" id="inlineFormCustomSelect">
               <option value="" disabled selected hidden={true}>Position</option>
-              <option value="outfield">Out Field</option>
-              <option value="infield">In Field</option>
-              <option value="1st base">1st Base</option>
+              <option value="outfield">Outfield</option>
+              <option value="infield">Infield</option>
+              <option value="1st base">1st base</option>
             </select>
           </Row>
         </Form>
