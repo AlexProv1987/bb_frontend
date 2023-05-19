@@ -1,5 +1,6 @@
 html,body{
-  height: 100%;
+   margin: 0;
+   height: 100%;
 }
 
 /*HOMEPAGE CSS*/
@@ -216,21 +217,18 @@ footer{
   color: white;
 }
 /*END FOOTER CSS*/
-.page-break-container{
-  background-image: url('./imgs/Triangle.svg');
-  background-position: center;
-  background-size: cover;
-}
+
 /*IMAGE CSS*/
-.page-break-img{
+.page-break-wrapper{
+  padding-left:1px
+}
+.page-break-wrapper img{
   width: 100%;
   height: auto;
+  position:relative;
+  right: .01em;
 }
-@media (min-width: 768px) {
-  .page-break-img {
-      width: 500px;
-  }
-}
+
 .search-logo-img {
   width: 100%;
   height: auto;
