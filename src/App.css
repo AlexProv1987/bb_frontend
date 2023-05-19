@@ -53,7 +53,6 @@ html,body{
 }
 
 .form span{
-
   position: absolute;
   right: 17px;
   top: 13px;
@@ -196,6 +195,13 @@ html,body{
     border-color: #a42f2c;
     border: 1px solid;
     
+}
+.get-button:active:focus{
+  border: none;
+  border-radius: 45px;
+  background-color: #a42f2c;
+  color: white;
+  width: 125px;
 }
 /* END CARD SECTION AND CARD CSS*/
 /*FOOTER/NAVBAR CSS*/
