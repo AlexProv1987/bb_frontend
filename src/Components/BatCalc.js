@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import axiosBaseURL from '../http';
+import Helpers from '../Helpers/helpers'
 const BatCalc = () => {
     const regex = /^[0-9\b]+$/;
     const [weight, setWeight] = useState("")
@@ -18,12 +19,12 @@ const BatCalc = () => {
             switch (event.target.name) {
                 case 'height':
                     if (height.length === 1) {
-                        setHeight('')
+                        setHeight("")
                     }
                     return;
                 case 'weight':
                     if (weight.length === 1) {
-                        setWeight('')
+                        setWeight("")
                     }
                     return;
                 default:
@@ -33,19 +34,18 @@ const BatCalc = () => {
     };
 
     const HandleTextChange = (event) => {
-
         if (regex.test(event.target.value)) {
             switch (event.target.name) {
                 case 'height':
-                    setHeight(event.target.value)
+                    setHeight(event.target.value);
                     return;
                 case 'weight':
-                    setWeight(event.target.value)
+                    setWeight(event.target.value);
                     return;
                 default:
                     return;
-
             };
+
         };
     };
     const HandleBatSubmit = (event) => {
@@ -59,10 +59,15 @@ const BatCalc = () => {
                     height: height
                 },
             }).then((response) => {
-                setSize(response.data.bat_size)
+                if (!isNaN(response.data.bat_size)) {
+                    setSize(response.data.bat_size + "\"")
+                }
+                else {
+                    setSize('')
+                }
 
             }).catch(function (error) {
-                console.log(error)
+                setSize("Please Try Again...")
             });
         };
     };
@@ -75,28 +80,28 @@ const BatCalc = () => {
             </Card.Header>
             <Card.Body className='justify-content-center text-center'>
                 <Form>
-                <Row className='text-center justify-content-center input-row-top'>
-                                <input type="text" 
-                                required  
-                                onKeyDown={HandleBackSpace} 
-                                value={height} 
-                                onChange={HandleTextChange} 
-                                name='height' 
-                                className="form-control card-input text-white text-center w-50" 
-                                placeholder="Height Ft" />
+                    <Row className='text-center justify-content-center input-row-top'>
+                        <input type="text"
+                            required
+                            onKeyDown={HandleBackSpace}
+                            value={height}
+                            onChange={HandleTextChange}
+                            name='height'
+                            className="form-control card-input text-white text-center w-50"
+                            placeholder="Height In'" />
                     </Row>
                     <Row className='text-center justify-content-center input-row-bottom'>
-                                <input 
-                                type="text" 
-                                required 
-                                onKeyDown={HandleBackSpace} 
-                                value={weight} 
-                                onChange={HandleTextChange} 
-                                name='weight' 
-                                className="form-control card-input text-white text-center w-50" 
-                                placeholder="Weight Lb" />
-                    </Row>  
-                    </Form>
+                        <input
+                            type="text"
+                            required
+                            onKeyDown={HandleBackSpace}
+                            value={weight}
+                            onChange={HandleTextChange}
+                            name='weight'
+                            className="form-control card-input text-white text-center w-50"
+                            placeholder="Weight Lb" />
+                    </Row>
+                </Form>
                 <Container className='card-reply-row text-center'>
                     <Col className='pb-4'>
                         {size.length !== 0 && <p className='reply-text'><b>{size}</b></p>}
