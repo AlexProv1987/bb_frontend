@@ -6,8 +6,6 @@ import Col from 'react-bootstrap/esm/Col';
 import GloveCalc from '../Components/GloveCalc';
 import LeagueFinder from '../Components/LeagueFinder';
 import PageBreak from '../imgs/pagebreak.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 const HomePage = () => {
     return (
         <Container fluid='true' className='main-container pt-2'>
