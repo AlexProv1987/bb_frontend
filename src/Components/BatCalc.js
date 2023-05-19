@@ -13,17 +13,16 @@ const BatCalc = () => {
     const [size, setSize] = useState('')
 
 
-    const HandleBackSpace=(event) =>{
-        if(event.key === 'Backspace')
-        {
+    const HandleBackSpace = (event) => {
+        if (event.key === 'Backspace') {
             switch (event.target.name) {
                 case 'height':
-                    if (height.length === 1){
+                    if (height.length === 1) {
                         setHeight('')
                     }
                     return;
                 case 'weight':
-                    if (weight.length === 1){
+                    if (weight.length === 1) {
                         setWeight('')
                     }
                     return;
@@ -50,37 +49,37 @@ const BatCalc = () => {
         };
     };
     const HandleBatSubmit = (event) => {
-        if(weight.length !== 0 && height.length !== 0){
-        axiosBaseURL.get("/calculater_api/batsize/", {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            params: {
-                weight: weight,
-                height: height
-            },
-        }).then((response) => {
-            setSize(response.data.bat_size)
+        if (weight.length !== 0 && height.length !== 0) {
+            axiosBaseURL.get("/calculater_api/batsize/", {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                params: {
+                    weight: weight,
+                    height: height
+                },
+            }).then((response) => {
+                setSize(response.data.bat_size)
 
-        }).catch(function(error){
-            console.log(error)
-          });
+            }).catch(function (error) {
+                console.log(error)
+            });
         };
     };
 
     return (
         <Card className='generic-card h-100'>
             <Card.Header className='text-center generic-card-header'>
-                
+
                 <h4 className='card-name'>Bat Calculator</h4>
             </Card.Header>
-            <Card.Body className='text-center justify-content-center'>
+            <Card.Body className='justify-content-center text-center'>
                 <Form>
-                    <Row className='text-center justify-content-center input-row-top'>
-                        <input type="text" onKeyDown={HandleBackSpace} onChange={HandleTextChange} name='height' value={height} className="form-control text-center text-light card-input w-50" placeholder="Height" />
+                <Row className='text-center justify-content-center input-row-top'>
+                                <input type="text" onKeyDown={HandleBackSpace} value={height} onChange={HandleTextChange} name='height' className="form-control card-input text-white text-center w-50" placeholder="Height Ft" />
                     </Row>
                     <Row className='text-center justify-content-center input-row-bottom'>
-                        <input type="text" onKeyDown={HandleBackSpace} onChange={HandleTextChange} name='weight' value={weight} className="form-control text-center text-light card-input w-50" placeholder="Weight" />
+                                <input type="text" onKeyDown={HandleBackSpace} value={weight} onChange={HandleTextChange} name='weight' className="form-control card-input text-white text-center w-50" placeholder="Weight Lb" />
                     </Row>
                 </Form>
                 <Container className='card-reply-row text-center'>
