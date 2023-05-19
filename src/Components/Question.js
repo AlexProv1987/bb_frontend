@@ -7,14 +7,14 @@ import { useState } from 'react';
 import axiosBaseURL from '../http';
 import LoadIcon from './LoadingIcon';
 const Question = () => {
-    const [question, setQuestion] = useState('');
-    const [answer, setAnswer] = useState('');
+    const [question, setQuestion] = useState("");
+    const [answer, setAnswer] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-
     const QTextChange = (event) => {
         setQuestion(event.target.value);
     };
     const HandleQuestionSubmit = (event) => {
+        setCanSubmit(false)
         if (question.length !== 0 && question.length <= 75) {
             setAnswer('')
             setIsLoading(true)
@@ -60,7 +60,7 @@ const Question = () => {
                     <Container>
                         <Row className='justify-content-center m-auto'>
                             <Col>
-                                <img src="./bboraclelogo.png" className='search-logo-img' alt="df" />
+                                <img src="./Logo.svg" className='search-logo-img' alt="logo" />
                             </Col>
                         </Row>
                         <Row className='pb-2 text-center'>
@@ -73,8 +73,8 @@ const Question = () => {
                         <div className="row height justify-content-center align-items-center">
                             <div className="col-md-6">
                                 <div className="form" onKeyDown={FormSubmit}>
-                                    <input type="text" value={question} onChange={QTextChange} name='question' className="form-control form-input search-gpt" placeholder="Ask Coach..." />
-                                    <span className="left-pan"><button onClick={HandleQuestionSubmit} className='search-btn'><FontAwesomeIcon icon={faMagnifyingGlass} size="2xl" style={{ color: "#ffffff", }} /></button></span>
+                                    <input type="text" id='input-question' value={question} onChange={QTextChange} name='question' className="form-control form-input search-gpt" placeholder="Ask Coach..." />
+                                    <span><button type='submit' onClick={HandleQuestionSubmit} className='search-btn pl-4'><FontAwesomeIcon icon={faMagnifyingGlass} size="2xl" style={{ color: "#ffffff", }} /></button></span>
                                 </div>
                             </div>
                         </div>
