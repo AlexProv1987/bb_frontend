@@ -8,9 +8,9 @@ import { useState } from 'react';
 import axiosBaseURL from '../http';
 const BatCalc = () => {
     const regex = /^[0-9\b]+$/;
-    const [weight, setWeight] = useState('')
-    const [height, setHeight] = useState('')
-    const [size, setSize] = useState('')
+    const [weight, setWeight] = useState("")
+    const [height, setHeight] = useState("")
+    const [size, setSize] = useState("")
 
 
     const HandleBackSpace = (event) => {
@@ -76,12 +76,27 @@ const BatCalc = () => {
             <Card.Body className='justify-content-center text-center'>
                 <Form>
                 <Row className='text-center justify-content-center input-row-top'>
-                                <input type="text" onKeyDown={HandleBackSpace} value={height} onChange={HandleTextChange} name='height' className="form-control card-input text-white text-center w-50" placeholder="Height Ft" />
+                                <input type="text" 
+                                required  
+                                onKeyDown={HandleBackSpace} 
+                                value={height} 
+                                onChange={HandleTextChange} 
+                                name='height' 
+                                className="form-control card-input text-white text-center w-50" 
+                                placeholder="Height Ft" />
                     </Row>
                     <Row className='text-center justify-content-center input-row-bottom'>
-                                <input type="text" onKeyDown={HandleBackSpace} value={weight} onChange={HandleTextChange} name='weight' className="form-control card-input text-white text-center w-50" placeholder="Weight Lb" />
-                    </Row>
-                </Form>
+                                <input 
+                                type="text" 
+                                required 
+                                onKeyDown={HandleBackSpace} 
+                                value={weight} 
+                                onChange={HandleTextChange} 
+                                name='weight' 
+                                className="form-control card-input text-white text-center w-50" 
+                                placeholder="Weight Lb" />
+                    </Row>  
+                    </Form>
                 <Container className='card-reply-row text-center'>
                     <Col className='pb-4'>
                         {size.length !== 0 && <p className='reply-text'><b>{size}</b></p>}
@@ -89,7 +104,7 @@ const BatCalc = () => {
                 </Container>
                 <Row className='text-center justify-content-center'>
                     <Col className='card-btn-col'>
-                        <Button onClick={HandleBatSubmit} className='get-button'>Calculate</Button>
+                        <Button type="submit" onClick={HandleBatSubmit} className='get-button'>Calculate</Button>
                     </Col>
                 </Row>
             </Card.Body>

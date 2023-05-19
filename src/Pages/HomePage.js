@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 const HomePage = () => {
     return (
-        <Container fluid='true' className='main-container pt-4'>
+        <Container fluid='true' className='main-container pt-2'>
             <Question />
             <Container fluid='true' className='page-break-wrapper'>
                <img src={PageBreak} alt='break'></img>

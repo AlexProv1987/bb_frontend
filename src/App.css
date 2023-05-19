@@ -219,14 +219,9 @@ footer{
 /*END FOOTER CSS*/
 
 /*IMAGE CSS*/
-.page-break-wrapper{
-  padding-left:1px
-}
 .page-break-wrapper img{
   width: 100%;
   height: auto;
-  position:relative;
-  right: .01em;
 }
 
 .search-logo-img {
