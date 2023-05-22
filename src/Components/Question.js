@@ -14,7 +14,6 @@ const Question = () => {
         setQuestion(event.target.value);
     };
     const HandleQuestionSubmit = (event) => {
-        setCanSubmit(false)
         if (question.length !== 0 && question.length <= 75) {
             setAnswer('')
             setIsLoading(true)
@@ -63,7 +62,7 @@ const Question = () => {
                                 <img src="./Logo.svg" className='search-logo-img' alt="logo" />
                             </Col>
                         </Row>
-                        <Row className='pb-2 text-center'>
+                        <Row className='pb-3 pt-3 text-center'>
                             <Col>
                                 <h6><b><i>Answering <u>EVERY</u> Baseball Question</i></b></h6>
                             </Col>
@@ -80,10 +79,8 @@ const Question = () => {
                         </div>
                     </div>
                     <Container className='reply-row'>
-
                         {isLoading && <LoadIcon />}
                         {answer.length !== 0 && <Row className='text-center'><Col className='text-wrap'><h5><b>{answer}</b></h5></Col></Row>}
-
                     </Container>
                 </Col>
             </Row>
