@@ -9,9 +9,14 @@ html,body{
   height: 100%;
 }
 
+.header-col{
+  padding-left:33px;
+}
 .pb-row{
   background-color: #a42f2c;
 }
+
+/*END DEATH OF ME IMG*/
 .sponsor {
   background-color: #a42f2c;
 }
