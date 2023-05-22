@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import axiosBaseURL from '../http';
-import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneVolume, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import LoadIcon from './LoadingIcon';
@@ -86,6 +86,7 @@ const LeagueFinder = () => {
       }).then((response) => {
         setIsLoading(false)
         setIsOpen(true)
+        console.log(response.data)
         setLeagueOptions(response.data.places)
       }).catch(function (error) {
         setIsLoading(false)
@@ -114,6 +115,9 @@ const LeagueFinder = () => {
                 </Row>
                 <Row>
                   <Col><a className="text-decoration-none text-dark" href={"tel:"+item.phone}><FontAwesomeIcon icon={faPhoneVolume} /> <b>{item.phone}</b></a></Col>
+                </Row>
+                <Row>
+                  <Col><a className="text-decoration-none text-dark" href={item.website} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGlobe} style={{color: "#000000",}} /> <b>{item.website}</b></a></Col>
                 </Row>
               </Container>
             )) : <Container className='p-2'>
