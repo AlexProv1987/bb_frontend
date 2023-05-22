@@ -108,16 +108,16 @@ const LeagueFinder = () => {
             {leagueOptions.length !== 0 ? leagueOptions.map((item, index) => (
               <Container className='p-2' key={index}>
                 <Row>
-                  <Col><b>{item.name}</b></Col>
+                  <Col>{item.name}</Col>
                 </Row>
                 <Row >
-                  <Col><b>{item.address}</b></Col>
+                  <Col>{item.address}</Col>
                 </Row>
                 <Row>
-                  <Col><a className="text-decoration-none text-dark" href={"tel:"+item.phone}><FontAwesomeIcon icon={faPhoneVolume} /> <b>{item.phone}</b></a></Col>
+                  <Col><a className="text-decoration-none text-dark" href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></Col>
                 </Row>
                 <Row>
-                  <Col><a className="text-decoration-none text-dark" href={item.website} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGlobe} style={{color: "#000000",}} /> <b>{item.website}</b></a></Col>
+                  <Col><a className="text-decoration-none text-dark" href={"tel:"+item.phone}><FontAwesomeIcon icon={faPhoneVolume} /> {item.phone}</a></Col>
                 </Row>
               </Container>
             )) : <Container className='p-2'>
