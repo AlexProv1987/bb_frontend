@@ -114,7 +114,7 @@ const LeagueFinder = () => {
                   <Col>{item.address}</Col>
                 </Row>
                 <Row>
-                  <Col><a className="text-decoration-none text-dark" href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></Col>
+                  <Col><a className="text-dark" href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></Col>
                 </Row>
                 <Row>
                   <Col><a className="text-decoration-none text-dark" href={"tel:"+item.phone}><FontAwesomeIcon icon={faPhoneVolume} /> {item.phone}</a></Col>
