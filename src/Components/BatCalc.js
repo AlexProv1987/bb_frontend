@@ -7,12 +7,13 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import axiosBaseURL from '../http';
 import Helpers from '../Helpers/helpers'
+import LoadIcon from './LoadingIcon';
 const BatCalc = () => {
     const regex = /^[0-9\b]+$/;
     const [weight, setWeight] = useState("")
     const [height, setHeight] = useState("")
     const [size, setSize] = useState("")
-
+    const [isLoading, setIsLoading] = useState(false)
 
     const HandleBackSpace = (event) => {
         if (event.key === 'Backspace') {
@@ -50,6 +51,7 @@ const BatCalc = () => {
     };
     const HandleBatSubmit = (event) => {
         if (weight.length !== 0 && height.length !== 0) {
+            setIsLoading(true)
             axiosBaseURL.get("/calculater_api/batsize/", {
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,10 +65,11 @@ const BatCalc = () => {
                     setSize(response.data.bat_size + "\"")
                 }
                 else {
-                    setSize('')
+                    setSize("No size found. Please ask Coach")
                 }
-
+                setIsLoading(false)
             }).catch(function (error) {
+                setIsLoading(false)
                 setSize("Please Try Again...")
             });
         };
@@ -109,7 +112,7 @@ const BatCalc = () => {
                 </Container>
                 <Row className='text-center justify-content-center'>
                     <Col className='card-btn-col'>
-                        <Button type="submit" onClick={HandleBatSubmit} className='get-button'>Calculate</Button>
+                        {isLoading ? <LoadIcon /> : <Button type="submit" onClick={HandleBatSubmit} className='get-button'>Calculate</Button>}
                     </Col>
                 </Row>
             </Card.Body>

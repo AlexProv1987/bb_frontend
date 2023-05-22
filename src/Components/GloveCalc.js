@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import axiosBaseURL from '../http';
 import Container from 'react-bootstrap/esm/Container';
+import LoadIcon from './LoadingIcon';
 
 const GloveCalc = () => {
 
@@ -13,7 +14,7 @@ const GloveCalc = () => {
   const [position, setPosition] = useState('');
   const [age, setAge] = useState('')
   const [size, setSize] = useState('')
-
+  const [isLoading, setIsLoading] = useState(false)
 
   const HandleBackSpace = (event) => {
     if (event.key === 'Backspace') {
@@ -40,6 +41,7 @@ const GloveCalc = () => {
   
   const HandleGloveSubmit = (event) => {
     if (position.length !== 0 && age.length !== 0) {
+      setIsLoading(true)
       axiosBaseURL.get("/calculater_api/glovesize/", {
         headers: {
           'Content-Type': 'application/json',
@@ -50,8 +52,10 @@ const GloveCalc = () => {
         },
       }).then((response) => {
         setSize(response.data.size)
+        setIsLoading(false)
       }).catch(function (error) {
         console.log(error)
+        setIsLoading(false)
       });
     }
   };
@@ -82,7 +86,7 @@ const GloveCalc = () => {
         </Container>
         <Row className='text-center justify-content-center'>
           <Col className='card-btn-col'>
-            <Button onClick={HandleGloveSubmit} className='get-button'>Calculate</Button>
+            {isLoading ? <LoadIcon /> : <Button onClick={HandleGloveSubmit} className='get-button'>Calculate</Button>}
           </Col>
         </Row>
       </Card.Body>
