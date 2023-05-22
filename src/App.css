@@ -9,17 +9,9 @@ html,body{
   height: 100%;
 }
 
-/*DEATH OF ME IMG*/
- .page-break-svg{
-  color: #a42f2c;
- }
- svg#bigTriangleImage {
-  position:absolute;
-  bottom:0px;
-	pointer-events: none;
+.pb-row{
+  background-color: #a42f2c;
 }
-
-/*END DEATH OF ME IMG*/
 .sponsor {
   background-color: #a42f2c;
 }
@@ -142,6 +134,7 @@ html,body{
 
 .card-name {
   color: #a42f2c;
+  font-weight: bold;
 }
 
 .card-container {
