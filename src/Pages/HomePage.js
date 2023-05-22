@@ -13,26 +13,21 @@ const HomePage = () => {
             <Question />
             <Container fluid='true' className='card-container h-100'>
                 <Container fluid='true' className='justify-content-center'>
-                    <Row className='text-center pb-2 pt-2'>
+                    <Row className='text-center text-white pt-3'>
                         <Col>
-                        <FontAwesomeIcon icon={faArrowDown} size="2xl" style={{color: "#ffffff",}} />
-                        </Col>
-                    </Row>
-                    <Row className='text-center text-white'>
-                        <Col className='header-col'>
                         <h3><b>Leagues & Calculators</b></h3>
                         </Col>
                     </Row>
                 </Container>
                 <Container>
                     <Row className='justify-content-center'>
-                        <Col sm={4} md={4} lg={4} className='card-column'>
+                        <Col xs={12} sm={12} md={12} lg={4} xl={4} className='card-column'>
                             <BatCalc />
                         </Col >
-                        <Col sm={4} md={4} lg={4} className='card-column'>
+                        <Col xs={12} sm={12} md={12} lg={4} xl={4} className='card-column'>
                             <GloveCalc />
                         </Col >
-                        <Col sm={4} md={4} lg={4} className='card-column'>
+                        <Col xs={12} sm={12} md={12} lg={4} xl={4} className='card-column'>
                             <LeagueFinder />
                         </Col>
                     </Row>
