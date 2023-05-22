@@ -91,7 +91,8 @@ const BatCalc = () => {
                             onChange={HandleTextChange}
                             name='height'
                             className="form-control card-input text-white text-center w-50"
-                            placeholder="Height | In'" />
+                            placeholder="Height" />
+
                     </Row>
                     <Row className='text-center justify-content-center input-row-bottom'>
                         <input
@@ -102,7 +103,7 @@ const BatCalc = () => {
                             onChange={HandleTextChange}
                             name='weight'
                             className="form-control card-input text-white text-center w-50"
-                            placeholder="Weight | Lb" />
+                            placeholder="Weight" />
                     </Row>
                 </Form>
                 <Container className='card-reply-row text-center'>
