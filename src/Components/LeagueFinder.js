@@ -144,21 +144,20 @@ const LeagueFinder = () => {
         <Card.Body>
           <Form>
             <Row className='text-center justify-content-center input-row-top'>
-              <input type="text" onChange={HandleChange} onKeyDown={HandleBackSpace} value={age} name='age' className="form-control text-center text-light card-input w-50" placeholder="Age" />
+              <input type="text" required onChange={HandleChange} onKeyDown={HandleBackSpace} value={age} name='age' className="form-control text-center text-light card-input w-50" placeholder="Age" />
             </Row>
             <Row className='text-center justify-content-center input-row-bottom'>
-              <input type="text" onChange={HandleChange} onKeyDown={HandleBackSpace} value={zip} name='zip' className="form-control text-center text-light card-input w-50" placeholder="Zip" />
+              <input type="text" required onChange={HandleChange} onKeyDown={HandleBackSpace} value={zip} name='zip' className="form-control text-center text-light card-input w-50" placeholder="Zip" />
             </Row>
-          </Form>
           <Row className='card-reply-row'>
             <p className='reply-text'></p>
           </Row>
           <Row className='text-center justify-content-center'>
             <Col className='card-btn-col'>
-              {isLoading ? <LoadIcon /> : <Button onClick={HandleLeagueSubmit} className='get-button'>Find League</Button>}
-
+              {isLoading ? <LoadIcon /> : <Button type='submit' onClick={HandleLeagueSubmit} className='get-button'>Find League</Button>}
             </Col>
           </Row>
+          </Form>
         </Card.Body>
       </Card>
     </Container>

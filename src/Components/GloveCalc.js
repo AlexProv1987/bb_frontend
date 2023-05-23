@@ -33,6 +33,7 @@ const GloveCalc = () => {
   const HandleSelect = (event) => {
     setPosition(event.target.value);
   };
+  
   const HandleAgeChange = (event) => {
     if (regex.test(event.target.value)) {
       setAge(event.target.value)
@@ -68,17 +69,16 @@ const GloveCalc = () => {
       <Card.Body className='text-center justify-content-center'>
         <Form>
           <Row className='text-center justify-content-center input-row-top'>
-            <input type="text" value={age} name='age' onChange={HandleAgeChange} onKeyDown={HandleBackSpace} className="form-control text-center text-light card-input w-50" placeholder="Age" />
+            <input type="text" required value={age} name='age' onChange={HandleAgeChange} onKeyDown={HandleBackSpace} className="form-control text-center text-light card-input w-50" placeholder="Age" />
           </Row>
           <Row className='text-center justify-content-center input-row-bottom '>
-            <select value={position} onChange={HandleSelect} className="form-control form-select text-center text-light card-input w-50" id="inlineFormCustomSelect">
+            <select value={position} onChange={HandleSelect} required className="form-control form-select text-center text-light card-input w-50" id="inlineFormCustomSelect">
               <option value="" disabled selected hidden={true}>Position</option>
               <option value="outfield">Outfield</option>
               <option value="infield">Infield</option>
               <option value="1st base">1st base</option>
             </select>
           </Row>
-        </Form>
         <Container className='card-reply-row text-center'>
           <Col className='pb-4'>
             {size.length !== 0 && <p className='reply-text'><b>{size}"</b></p>}
@@ -86,9 +86,10 @@ const GloveCalc = () => {
         </Container>
         <Row className='text-center justify-content-center'>
           <Col className='card-btn-col'>
-            {isLoading ? <LoadIcon /> : <Button onClick={HandleGloveSubmit} className='get-button'>Calculate</Button>}
+            {isLoading ? <LoadIcon /> : <Button type='submit' onClick={HandleGloveSubmit} className='get-button'>Calculate</Button>}
           </Col>
         </Row>
+        </Form>
       </Card.Body>
     </Card >
   );
