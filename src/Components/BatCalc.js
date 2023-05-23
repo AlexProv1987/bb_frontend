@@ -105,7 +105,6 @@ const BatCalc = () => {
                             className="form-control card-input text-white text-center w-50"
                             placeholder="Weight" />
                     </Row>
-                </Form>
                 <Container className='card-reply-row text-center'>
                     <Col className='pb-4'>
                         {size.length !== 0 && <p className='reply-text'><b>{size}</b></p>}
@@ -116,6 +115,7 @@ const BatCalc = () => {
                         {isLoading ? <LoadIcon /> : <Button type="submit" onClick={HandleBatSubmit} className='get-button'>Calculate</Button>}
                     </Col>
                 </Row>
+                </Form>
             </Card.Body>
         </Card>
     );
