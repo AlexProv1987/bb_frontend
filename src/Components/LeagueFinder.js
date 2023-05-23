@@ -22,6 +22,9 @@ const LeagueFinder = () => {
   Modal.setAppElement("#root")
 
   const customStyles = {
+    overlay:{
+      overflowY:"scroll",
+    },
     content: {
       top: '50%',
       left: '50%',
@@ -30,6 +33,7 @@ const LeagueFinder = () => {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       backgroundColor: '#a42f2c',
+      maxHeight:"80%",
     },
   };
 

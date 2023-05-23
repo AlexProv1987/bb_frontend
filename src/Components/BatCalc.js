@@ -6,10 +6,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import axiosBaseURL from '../http';
-import Helpers from '../Helpers/helpers'
+import { GetIntenger, ArraySum, ConvertUnitOfMeasure, CheckNumber } from '../Helpers/helpers'
 import LoadIcon from './LoadingIcon';
 const BatCalc = () => {
-    const regex = /^[0-9\b]+$/;
+    const regex = /^[' 0-9\b]+$/;
     const [weight, setWeight] = useState("")
     const [height, setHeight] = useState("")
     const [size, setSize] = useState("")
@@ -19,9 +19,7 @@ const BatCalc = () => {
         if (event.key === 'Backspace') {
             switch (event.target.name) {
                 case 'height':
-                    if (height.length === 1) {
-                        setHeight("")
-                    }
+                   setHeight("")
                     return;
                 case 'weight':
                     if (weight.length === 1) {
@@ -35,30 +33,41 @@ const BatCalc = () => {
     };
 
     const HandleTextChange = (event) => {
-        if (regex.test(event.target.value)) {
-            switch (event.target.name) {
-                case 'height':
-                    setHeight(event.target.value);
-                    return;
-                case 'weight':
+        switch (event.target.name) {
+            case 'height':
+                    if (height.length === 0) {
+                        if (regex.test(event.target.value)) {
+                            setHeight(event.target.value + "'")
+                        }
+                    }
+                    else {
+                        if(regex.test(event.target.value) && height.length <=3)
+                        {
+                            setHeight(event.target.value)
+                        }
+                    }
+                return;
+            case 'weight':
+                if (regex.test(event.target.value)) {
                     setWeight(event.target.value);
-                    return;
-                default:
-                    return;
-            };
-
+                }
+                return;
+            default:
+                return;
         };
     };
+
     const HandleBatSubmit = (event) => {
         if (weight.length !== 0 && height.length !== 0) {
             setIsLoading(true)
+            let convertedHeight = GetHeight(height)
             axiosBaseURL.get("/calculater_api/batsize/", {
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 params: {
                     weight: weight,
-                    height: height
+                    height: convertedHeight
                 },
             }).then((response) => {
                 if (!isNaN(response.data.bat_size)) {
@@ -66,7 +75,7 @@ const BatCalc = () => {
                 }
                 else {
                     setSize("No size found. Please ask Coach")
-                }
+                };
                 setIsLoading(false)
             }).catch(function (error) {
                 setIsLoading(false)
@@ -75,10 +84,18 @@ const BatCalc = () => {
         };
     };
 
+    const GetHeight = (value) => {
+        let height = 0
+        let ft = GetIntenger("'", value, 0)
+        let convertedFt = ConvertUnitOfMeasure(ft, 12)
+        let validInches = CheckNumber(GetIntenger("'", value, 1), 11)
+        height = ArraySum([convertedFt, validInches], 0)
+        return height;
+    }
+
     return (
         <Card className='generic-card h-100'>
             <Card.Header className='text-center generic-card-header'>
-
                 <h4 className='card-name'>Bat Calculator</h4>
             </Card.Header>
             <Card.Body className='justify-content-center text-center'>
@@ -105,16 +122,16 @@ const BatCalc = () => {
                             className="form-control card-input text-white text-center w-50"
                             placeholder="Weight" />
                     </Row>
-                <Container className='card-reply-row text-center'>
-                    <Col className='pb-4'>
-                        {size.length !== 0 && <p className='reply-text'><b>{size}</b></p>}
-                    </Col>
-                </Container>
-                <Row className='text-center justify-content-center'>
-                    <Col className='card-btn-col'>
-                        {isLoading ? <LoadIcon /> : <Button type="submit" onClick={HandleBatSubmit} className='get-button'>Calculate</Button>}
-                    </Col>
-                </Row>
+                    <Container className='card-reply-row text-center'>
+                        <Col className='pb-4'>
+                            {size.length !== 0 && <p className='reply-text'><b>{size}</b></p>}
+                        </Col>
+                    </Container>
+                    <Row className='text-center justify-content-center'>
+                        <Col className='card-btn-col'>
+                            {isLoading ? <LoadIcon /> : <Button type="submit" onClick={HandleBatSubmit} className='get-button'>Calculate</Button>}
+                        </Col>
+                    </Row>
                 </Form>
             </Card.Body>
         </Card>

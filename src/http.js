@@ -1,5 +1,5 @@
 import axios from 'axios';
 const axiosBaseURL = axios.create({
-    baseURL:"https://apitest.aprovtestdmns.com/"
+    baseURL:process.env.REACT_APP_API
 });
 export default axiosBaseURL
