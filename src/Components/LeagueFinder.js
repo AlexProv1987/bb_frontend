@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import axiosBaseURL from '../http';
-import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneVolume, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import LoadIcon from './LoadingIcon';
@@ -22,6 +22,9 @@ const LeagueFinder = () => {
   Modal.setAppElement("#root")
 
   const customStyles = {
+    overlay:{
+      overflowY:"scroll",
+    },
     content: {
       top: '50%',
       left: '50%',
@@ -30,6 +33,7 @@ const LeagueFinder = () => {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       backgroundColor: '#a42f2c',
+      maxHeight:"80%",
     },
   };
 
@@ -86,6 +90,7 @@ const LeagueFinder = () => {
       }).then((response) => {
         setIsLoading(false)
         setIsOpen(true)
+        console.log(response.data)
         setLeagueOptions(response.data.places)
       }).catch(function (error) {
         setIsLoading(false)
@@ -107,13 +112,16 @@ const LeagueFinder = () => {
             {leagueOptions.length !== 0 ? leagueOptions.map((item, index) => (
               <Container className='p-2' key={index}>
                 <Row>
-                  <Col><b>{item.name}</b></Col>
+                  <Col>{item.name}</Col>
                 </Row>
                 <Row >
-                  <Col><b>{item.address}</b></Col>
+                  <Col>{item.address}</Col>
                 </Row>
                 <Row>
-                  <Col><a className="text-decoration-none text-dark" href="tel:PHONE_NUM"><FontAwesomeIcon icon={faPhoneVolume} /> <b>{item.phone}</b></a></Col>
+                  <Col><a className="text-dark" href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></Col>
+                </Row>
+                <Row>
+                  <Col><a className="text-decoration-none text-dark" href={"tel:"+item.phone}><FontAwesomeIcon icon={faPhoneVolume} /> {item.phone}</a></Col>
                 </Row>
               </Container>
             )) : <Container className='p-2'>
@@ -140,21 +148,20 @@ const LeagueFinder = () => {
         <Card.Body>
           <Form>
             <Row className='text-center justify-content-center input-row-top'>
-              <input type="text" onChange={HandleChange} onKeyDown={HandleBackSpace} value={age} name='age' className="form-control text-center text-light card-input w-50" placeholder="Age" />
+              <input type="text" required onChange={HandleChange} onKeyDown={HandleBackSpace} value={age} name='age' className="form-control text-center text-light card-input w-50" placeholder="Age" />
             </Row>
             <Row className='text-center justify-content-center input-row-bottom'>
-              <input type="text" onChange={HandleChange} onKeyDown={HandleBackSpace} value={zip} name='zip' className="form-control text-center text-light card-input w-50" placeholder="Zip" />
+              <input type="text" required onChange={HandleChange} onKeyDown={HandleBackSpace} value={zip} name='zip' className="form-control text-center text-light card-input w-50" placeholder="Zip" />
             </Row>
-          </Form>
           <Row className='card-reply-row'>
             <p className='reply-text'></p>
           </Row>
           <Row className='text-center justify-content-center'>
             <Col className='card-btn-col'>
-              {isLoading ? <LoadIcon /> : <Button onClick={HandleLeagueSubmit} className='get-button'>Find League</Button>}
-
+              {isLoading ? <LoadIcon /> : <Button type='submit' onClick={HandleLeagueSubmit} className='get-button'>Find League</Button>}
             </Col>
           </Row>
+          </Form>
         </Card.Body>
       </Card>
     </Container>

@@ -1,25 +1,19 @@
+html,body{
+   margin: 0;
+   height: 100%;
+}
+
 /*HOMEPAGE CSS*/
 .main-container {
   width: 100%;
   height: 100%;
-  padding-bottom: 70px;
 }
 
-.card-container {
-  padding-top: 45px;
+.header-col{
+  padding-left:33px;
 }
-
-/*DEATH OF ME IMG*/
-.page-break-container{
+.pb-row{
   background-color: #a42f2c;
-}
- .page-break-svg{
-  color: #a42f2c;
- }
- svg#bigTriangleImage {
-  position:absolute;
-  bottom:0px;
-	pointer-events: none;
 }
 
 /*END DEATH OF ME IMG*/
@@ -29,10 +23,16 @@
 /*END HOMEPAGE CSS*/
 /*ASK COMPONENT CSS*/
 .question-container {
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: 70px;
   width: 100%;
   height: 100%;
+}
+
+#input-question{
+  padding-inline-start: 15px;
+  padding-inline-end: 90px;
+  position:relative;
 }
 
 .form{
@@ -50,13 +50,10 @@
 }
 
 .form span{
-
   position: absolute;
   right: 17px;
   top: 13px;
-  padding: 2px;
-  border-left: 1px solid #d1d5db;
-
+  padding-bottom: 10px;
 }
 
 .left-span{
@@ -101,10 +98,10 @@
 }
 @keyframes rotation {
   from {
-    transform: rotate(0deg);
+    transform: rotate(359deg);
   }
   to {
-    transform: rotate(359deg);
+    transform: rotate(0deg);
   }
 }
 /*END LOAD ICON CSS*/
@@ -113,11 +110,6 @@
 
 .form-select{
   background: #a42f2c url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'><path fill='%23ffffff' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") right .75rem center/8px 10px no-repeat!important;
-}
-
-.league{
-  padding-left: 0 !important;
-  padding-right: 0 !important;
 }
 
 .card-reply-row{
@@ -142,6 +134,7 @@
 
 .card-name {
   color: #a42f2c;
+  font-weight: bold;
 }
 
 .card-container {
@@ -173,7 +166,7 @@
 ::placeholder {
   color: white !important;
   opacity: 1 !important;
-  font-weight: bold;
+  font-weight: normal !important;
 }
 
 .reply-row {
@@ -196,14 +189,17 @@
     border: 1px solid;
     
 }
+.get-button:active:focus{
+  border: none;
+  border-radius: 45px;
+  background-color: #a42f2c;
+  color: white;
+  width: 125px;
+}
+
 /* END CARD SECTION AND CARD CSS*/
 /*FOOTER/NAVBAR CSS*/
-footer{
-  position: fixed;
-  bottom: 0;
-  height:75px;
-  width:100%;
-}
+
 .stuck-element{
   background-color: #a42f2c;
   color: white;
@@ -211,14 +207,25 @@ footer{
 /*END FOOTER CSS*/
 
 /*IMAGE CSS*/
+.page-break-wrapper img{
+  width: 100%;
+  height: auto;
+}
 
 .search-logo-img {
   width: 100%;
   height: auto;
 }
+
+@media (min-width: 300px){
+  .search-logo-img{
+    width:250px;
+  }
+}
+
 @media (min-width: 768px) {
   .search-logo-img {
-      width: 150px;
+      width: 250px;
   }
 }
 
@@ -237,7 +244,11 @@ footer{
 /*END IMAGE CSS*/
 
 /*LEAGUE MODAL CSS*/
-
+.league{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  overflow:auto;
+}
 /*END LEAGUE MODAL CSS*/
 
 
