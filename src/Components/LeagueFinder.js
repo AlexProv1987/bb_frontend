@@ -19,11 +19,12 @@ const LeagueFinder = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [leagueOptions, setLeagueOptions] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false)
   Modal.setAppElement("#root")
 
   const customStyles = {
-    overlay:{
-      overflowY:"scroll",
+    overlay: {
+      overflowY: "scroll",
     },
     content: {
       top: '50%',
@@ -33,7 +34,7 @@ const LeagueFinder = () => {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       backgroundColor: '#a42f2c',
-      maxHeight:"80%",
+      maxHeight: "80%",
     },
   };
 
@@ -93,8 +94,10 @@ const LeagueFinder = () => {
         console.log(response.data)
         setLeagueOptions(response.data.places)
       }).catch(function (error) {
-        setIsLoading(false)
-        console.log(error)
+        if (error.response) {
+          setErrorMessage(error.response.data.error)
+          setIsLoading(false)
+        }
       });
     }
   };
@@ -121,7 +124,7 @@ const LeagueFinder = () => {
                   <Col><a className="text-dark" href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></Col>
                 </Row>
                 <Row>
-                  <Col><a className="text-decoration-none text-dark" href={"tel:"+item.phone}><FontAwesomeIcon icon={faPhoneVolume} /> {item.phone}</a></Col>
+                  <Col><a className="text-decoration-none text-dark" href={"tel:" + item.phone}><FontAwesomeIcon icon={faPhoneVolume} /> {item.phone}</a></Col>
                 </Row>
               </Container>
             )) : <Container className='p-2'>
@@ -153,14 +156,16 @@ const LeagueFinder = () => {
             <Row className='text-center justify-content-center input-row-bottom'>
               <input type="text" required onChange={HandleChange} onKeyDown={HandleBackSpace} value={zip} name='zip' className="form-control text-center text-light card-input w-50" placeholder="Zip" />
             </Row>
-          <Row className='card-reply-row'>
-            <p className='reply-text'></p>
-          </Row>
-          <Row className='text-center justify-content-center'>
-            <Col className='card-btn-col'>
-              {isLoading ? <LoadIcon /> : <Button type='submit' onClick={HandleLeagueSubmit} className='get-button'>Find League</Button>}
-            </Col>
-          </Row>
+            <Container className='card-reply-row text-center'>
+              <Col className='pb-4'>
+                {errorMessage ? <p className='text-center'><b>{errorMessage}</b></p> : <p className='reply-text'></p>}
+              </Col>
+            </Container>
+            <Row className='text-center justify-content-center'>
+              <Col className='card-btn-col'>
+                {isLoading ? <LoadIcon /> : <Button type='submit' onClick={HandleLeagueSubmit} className='get-button'>Find League</Button>}
+              </Col>
+            </Row>
           </Form>
         </Card.Body>
       </Card>

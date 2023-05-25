@@ -47,7 +47,6 @@ const Question = () => {
             }).catch(function (error) {
                 setIsLoading(false)
                 setAnswer("Our Coaches are very busy, please try again shortly.")
-                console.log(error)
             });
         }
     };
