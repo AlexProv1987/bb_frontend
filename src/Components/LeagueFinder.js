@@ -79,6 +79,9 @@ const LeagueFinder = () => {
 
   const HandleLeagueSubmit = (event) => {
     if (zip.length !== 0 && age.length !== 0) {
+      if (errorMessage.length !==0){
+        setErrorMessage("")
+      }
       setIsLoading(true)
       axiosBaseURL.get("/league_api/findleague/", {
         headers: {
