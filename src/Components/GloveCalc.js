@@ -55,7 +55,7 @@ const GloveCalc = () => {
         setSize(response.data.size)
         setIsLoading(false)
       }).catch(function (error) {
-        console.log(error)
+        setSize("Please try Again..")
         setIsLoading(false)
       });
     }
