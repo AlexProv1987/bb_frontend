@@ -198,7 +198,13 @@ html,body{
 
 /* END CARD SECTION AND CARD CSS*/
 /*FOOTER/NAVBAR CSS*/
-
+.footer-link{
+  text-decoration: none;
+  color:white;
+}
+.footer-link:hover{
+  color:white;
+}
 .stuck-element{
   background-color: #a42f2c;
   color: white;
