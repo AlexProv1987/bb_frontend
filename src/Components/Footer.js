@@ -9,7 +9,7 @@ const Footer = () => {
         <Container fluid ='true' className='stuck-element'>
         <footer className="py-4 text-white stuck-element">
                 <Row xs='auto' className="justify-content-center">
-                   <p>© 2021 Copyright: ProCarn Solutions</p>
+                   <a className="footer-link" target="_blank" rel="noopener noreferrer" href="https://procarnsolutions.com/">© 2021 Copyright: ProCarn Solutions</a>
                 </Row>
         </footer>
         </Container>
