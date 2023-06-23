@@ -5,15 +5,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import axiosBaseURL from '../http';
+import { Text } from 'react-native';
 import LoadIcon from './LoadingIcon';
 const Question = () => {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
     const QTextChange = (event) => {
         setQuestion(event.target.value);
     };
+
     const HandleQuestionSubmit = (event) => {
+        setAnswer("Sure, here's a practice plan for the New Zealand Under-15 team:\n\n1. Warm-up: Start with a light jog and dynamic stretching to get the blood flowing and prevent injuries.\n2. Fielding drills: Focus on ground balls, pop-ups, and throwing accuracy.\n3. Batting practice: Work on hitting mechanics and timing, with a mix of live pitching and tee work.\n4. Pitching drills: Practice proper mechanics and work on different pitches.\n5. Base running: Practice stealing, sliding, and reading pitchers.\n6. Defensive scenarios: Work on situational plays, such as cutoffs and double plays.\n7. Scrimmage: Put everything together in a game-like setting.\n8. Cool-down: End with static stretching and a team huddle to review the practice and set goals for the next one."
+        )
         if (question.length !== 0 && question.length <= 75) {
             setAnswer('')
             setIsLoading(true)
@@ -32,6 +37,7 @@ const Question = () => {
             });
         }
     };
+    
     const FormSubmit = (event) => {
         if(event.key === 'Enter' && question.length !== 0 && question.length <= 75){
             setAnswer('')
@@ -79,7 +85,7 @@ const Question = () => {
                     </div>
                     <Container className='reply-row'>
                         {isLoading && <LoadIcon />}
-                        {answer.length !== 0 && <Row className='text-center'><Col className='text-wrap'><h5><b>{answer}</b></h5></Col></Row>}
+                        {answer.length !== 0 && <Row className='d-flex justify-content-center'><Col className='reply-column text-wrap d-flex justify-content-center' style={{alignSelf: 'flex-start'}}><Text style={{alignSelf: 'flex-start', justifyContent: 'center',fontSize:'20px', fontWeight:'bold'}}>{answer}</Text></Col></Row>}
                     </Container>
                 </Col>
             </Row>
