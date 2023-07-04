@@ -7,6 +7,7 @@ import { useState } from 'react';
 import axiosBaseURL from '../http';
 import { Text } from 'react-native';
 import LoadIcon from './LoadingIcon';
+import Paper from '../imgs/paper.jpg';
 const Question = () => {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
@@ -17,8 +18,6 @@ const Question = () => {
     };
 
     const HandleQuestionSubmit = (event) => {
-        setAnswer("Sure, here's a practice plan for the New Zealand Under-15 team:\n\n1. Warm-up: Start with a light jog and dynamic stretching to get the blood flowing and prevent injuries.\n2. Fielding drills: Focus on ground balls, pop-ups, and throwing accuracy.\n3. Batting practice: Work on hitting mechanics and timing, with a mix of live pitching and tee work.\n4. Pitching drills: Practice proper mechanics and work on different pitches.\n5. Base running: Practice stealing, sliding, and reading pitchers.\n6. Defensive scenarios: Work on situational plays, such as cutoffs and double plays.\n7. Scrimmage: Put everything together in a game-like setting.\n8. Cool-down: End with static stretching and a team huddle to review the practice and set goals for the next one."
-        )
         if (question.length !== 0 && question.length <= 75) {
             setAnswer('')
             setIsLoading(true)
@@ -33,13 +32,12 @@ const Question = () => {
             }).catch(function (error) {
                 setIsLoading(false)
                 setAnswer("Our Coaches are very busy, please try again shortly.")
-                console.log(error)
             });
         }
     };
-    
+
     const FormSubmit = (event) => {
-        if(event.key === 'Enter' && question.length !== 0 && question.length <= 75){
+        if (event.key === 'Enter' && question.length !== 0 && question.length <= 75) {
             setAnswer('')
             setIsLoading(true)
             axiosBaseURL.get("/question_api/ask/", {
@@ -73,7 +71,7 @@ const Question = () => {
                             </Col>
                         </Row>
                     </Container>
-                    <div className="container container-fluid">
+                    <div className="container container-fluid pb-4">
                         <div className="row height justify-content-center align-items-center">
                             <div className="col-md-6">
                                 <div className="form" onKeyDown={FormSubmit}>
@@ -83,10 +81,16 @@ const Question = () => {
                             </div>
                         </div>
                     </div>
-                    <Container className='reply-row'>
-                        {isLoading && <LoadIcon />}
-                        {answer.length !== 0 && <Row className='d-flex justify-content-center'><Col className='reply-column text-wrap d-flex justify-content-center' style={{alignSelf: 'flex-start'}}><Text style={{alignSelf: 'flex-start', justifyContent: 'center',fontSize:'20px', fontWeight:'bold'}}>{answer}</Text></Col></Row>}
-                    </Container>
+                    {
+                        isLoading ? <Container className='reply-row'><LoadIcon /></Container> :
+                            answer.length !== 0 ? <Container className='reply-row' style={{ backgroundImage: `url(${Paper})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+                                <Row className='d-flex justify-content-center reply-text'>
+                                    <Col className='reply-column text-wrap d-flex justify-content-center' style={{ alignSelf: 'flex-start' }}>
+                                        <Text style={{ alignSelf: 'flex-start', justifyContent: 'center', fontSize: '16px', fontFamily: 'Bradley Hand, cursive' }}>{answer}</Text>
+                                    </Col>
+                                </Row>
+                            </Container> : <Container className='reply-row'></Container>
+                    }
                 </Col>
             </Row>
         </Container>
