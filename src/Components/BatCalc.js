@@ -8,11 +8,12 @@ import { useState } from 'react';
 import axiosBaseURL from '../http';
 import { GetIntenger, ArraySum, ConvertUnitOfMeasure, CheckNumber } from '../Helpers/helpers'
 import LoadIcon from './LoadingIcon';
+import ProductModal from "./ProductModal";
 const BatCalc = () => {
     const regex = /^[' 0-9\b]+$/;
     const [weight, setWeight] = useState("")
     const [height, setHeight] = useState("")
-    const [size, setSize] = useState("")
+    const [reply, setReply] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
     const HandleBackSpace = (event) => {
@@ -70,16 +71,11 @@ const BatCalc = () => {
                     height: convertedHeight
                 },
             }).then((response) => {
-                if (!isNaN(response.data.bat_size)) {
-                    setSize(response.data.bat_size + "\"")
-                }
-                else {
-                    setSize("No size found. Please ask Coach")
-                };
+                setReply(response.data)
                 setIsLoading(false)
             }).catch(function (error) {
                 setIsLoading(false)
-                setSize("Please Try Again...")
+                setReply("Please Try Again...")
             });
         };
     };
@@ -124,7 +120,15 @@ const BatCalc = () => {
                     </Row>
                     <Container className='card-reply-row text-center'>
                         <Col className='pb-4'>
-                            {size.length !== 0 && <p className='reply-text'><b>{size}</b></p>}
+                        {reply.length !==0 && isNaN(reply.bat_size) && !isLoading ? <p className='reply-text'><b>No size found. Please ask Coach</b></p> : !isLoading && reply.length !==0 && <ProductModal 
+                                                size={reply.bat_size} 
+                                                productName={reply.product.product_name} 
+                                                url={reply.product.product_url} 
+                                                img={reply.product.product_img}
+                                                vendor={reply.product.product_vendor}
+                                                price={reply.product.product_price}
+                                                reviews={reply.product.product_reviews}
+                                                />}
                         </Col>
                     </Container>
                     <Row className='text-center justify-content-center'>

@@ -1,21 +1,20 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import axiosBaseURL from '../http';
 import Container from 'react-bootstrap/esm/Container';
 import LoadIcon from './LoadingIcon';
-
+import ProductModal from "./ProductModal";
 const GloveCalc = () => {
 
   const regex = /^[0-9\b]+$/;
   const [position, setPosition] = useState('');
   const [age, setAge] = useState('')
-  const [size, setSize] = useState('')
+  const [reply, setReply] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-
   const HandleBackSpace = (event) => {
     if (event.key === 'Backspace') {
       switch (event.target.name) {
@@ -52,10 +51,10 @@ const GloveCalc = () => {
           age: age
         },
       }).then((response) => {
-        setSize(response.data.size)
+        setReply(response.data)
         setIsLoading(false)
       }).catch(function (error) {
-        setSize("Please try Again..")
+        setReply("Please try Again..")
         setIsLoading(false)
       });
     }
@@ -81,7 +80,15 @@ const GloveCalc = () => {
           </Row>
         <Container className='card-reply-row text-center'>
           <Col className='pb-4'>
-            {size.length !== 0 && <p className='reply-text'><b>{size}"</b></p>}
+            {reply.size === 'none found' ? <p className='reply-text'><b>No size found. Please ask Coach</b></p> : !isLoading && reply.length !==0 && <ProductModal 
+                                                size={reply.size} 
+                                                productName={reply.product.product_name} 
+                                                url={reply.product.product_url} 
+                                                img={reply.product.product_img}
+                                                vendor={reply.product.product_vendor}
+                                                price={reply.product.product_price}
+                                                reviews={reply.product.product_reviews}
+                                                />}
           </Col>
         </Container>
         <Row className='text-center justify-content-center'>
