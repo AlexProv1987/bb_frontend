@@ -46,17 +46,17 @@ const ProductModal = (props) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col className='text-center'>
                         <p>{props.vendor}</p>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col className='text-center'> 
                         <p>{props.price}</p>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col className='text-center'>
                         <p>{props.reviews}</p>
                     </Col>
                 </Row>
