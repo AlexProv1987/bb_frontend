@@ -13,6 +13,7 @@ const BatCalc = () => {
     const regex = /^[' 0-9\b]+$/;
     const [weight, setWeight] = useState("")
     const [height, setHeight] = useState("")
+    const [age, setAge] = useState("")
     const [reply, setReply] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
@@ -20,11 +21,16 @@ const BatCalc = () => {
         if (event.key === 'Backspace') {
             switch (event.target.name) {
                 case 'height':
-                   setHeight("")
+                    setHeight("")
                     return;
                 case 'weight':
                     if (weight.length === 1) {
                         setWeight("")
+                    }
+                    return;
+                case 'age':
+                    if (age.length === 1) {
+                        setAge("")
                     }
                     return;
                 default:
@@ -36,21 +42,25 @@ const BatCalc = () => {
     const HandleTextChange = (event) => {
         switch (event.target.name) {
             case 'height':
-                    if (height.length === 0) {
-                        if (regex.test(event.target.value)) {
-                            setHeight(event.target.value + "'")
-                        }
+                if (height.length === 0) {
+                    if (regex.test(event.target.value)) {
+                        setHeight(event.target.value + "'")
                     }
-                    else {
-                        if(regex.test(event.target.value) && height.length <=3)
-                        {
-                            setHeight(event.target.value)
-                        }
+                }
+                else {
+                    if (regex.test(event.target.value) && height.length <= 3) {
+                        setHeight(event.target.value)
                     }
+                }
                 return;
             case 'weight':
                 if (regex.test(event.target.value)) {
                     setWeight(event.target.value);
+                }
+                return;
+            case 'age':
+                if (regex.test(event.target.value)) {
+                    setAge(event.target.value);
                 }
                 return;
             default:
@@ -59,7 +69,7 @@ const BatCalc = () => {
     };
 
     const HandleBatSubmit = (event) => {
-        if (weight.length !== 0 && height.length !== 0) {
+        if (weight.length !== 0 && height.length !== 0 && age.length !== 0) {
             setIsLoading(true)
             let convertedHeight = GetHeight(height)
             axiosBaseURL.get("/calculater_api/batsize/", {
@@ -68,7 +78,8 @@ const BatCalc = () => {
                 },
                 params: {
                     weight: weight,
-                    height: convertedHeight
+                    height: convertedHeight,
+                    age:age
                 },
             }).then((response) => {
                 setReply(response.data)
@@ -96,7 +107,18 @@ const BatCalc = () => {
             </Card.Header>
             <Card.Body className='justify-content-center text-center'>
                 <Form>
-                    <Row className='text-center justify-content-center input-row-top'>
+                    <Row className='text-center justify-content-center input-row-top pb-4'>
+                        <input
+                            type="text"
+                            required
+                            onKeyDown={HandleBackSpace}
+                            value={age}
+                            onChange={HandleTextChange}
+                            name='age'
+                            className="form-control card-input text-white text-center w-50"
+                            placeholder="Age" />
+                    </Row>
+                    <Row className='text-center justify-content-center pb-4'>
                         <input type="text"
                             required
                             onKeyDown={HandleBackSpace}
@@ -120,15 +142,15 @@ const BatCalc = () => {
                     </Row>
                     <Container className='card-reply-row text-center'>
                         <Col className='pb-4'>
-                        {reply.length !==0 && isNaN(reply.bat_size) && !isLoading ? <p className='reply-text'><b>No size found. Please ask Coach</b></p> : !isLoading && reply.length !==0 && <ProductModal 
-                                                size={reply.bat_size} 
-                                                productName={reply.product.product_name} 
-                                                url={reply.product.product_url} 
-                                                img={reply.product.product_img}
-                                                vendor={reply.product.product_vendor}
-                                                price={reply.product.product_price}
-                                                reviews={reply.product.product_reviews}
-                                                />}
+                            {reply.length !== 0 && isNaN(reply.bat_size) && !isLoading ? <p className='reply-text'><b>No size found. Please ask Coach</b></p> : !isLoading && reply.length !== 0 && <ProductModal
+                                size={reply.bat_size}
+                                productName={reply.product.product_name}
+                                url={reply.product.product_url}
+                                img={reply.product.product_img}
+                                vendor={reply.product.product_vendor}
+                                price={reply.product.product_price}
+                                reviews={reply.product.product_reviews}
+                            />}
                         </Col>
                     </Container>
                     <Row className='text-center justify-content-center'>
