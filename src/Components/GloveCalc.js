@@ -76,6 +76,7 @@ const GloveCalc = () => {
               <option value="outfield">Outfield</option>
               <option value="infield">Infield</option>
               <option value="1st base">1st base</option>
+              <option value="catcher">Catcher</option>
             </select>
           </Row>
         <Container className='card-reply-row text-center'>
