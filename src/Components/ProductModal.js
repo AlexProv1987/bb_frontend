@@ -1,6 +1,5 @@
 import Modal from 'react-modal';
-import { Card, Row, Col } from 'react-bootstrap';
-import Container from 'react-bootstrap/esm/Container';
+import {Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +9,6 @@ const ProductModal = (props) => {
     Modal.setAppElement("#root")
     const closeModal = () => {
         setIsOpen(false);
-        console.log(props)
     }
 
     return (

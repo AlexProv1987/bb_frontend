@@ -82,7 +82,8 @@ const GloveCalc = () => {
           </Row>
         <Container className='card-reply-row text-center'>
           <Col className='pb-4'>
-            {reply.size === 'none found' ? <p className='reply-text'><b>No size found. Please ask Coach</b></p> : !isLoading && reply.length !==0 && <ProductModal 
+            {reply.size === 'none found' ? <p className='reply-text'><b>No size found. Please ask Coach</b></p> : !isLoading && reply.length !==0 && 
+                                              <ProductModal 
                                                 size={reply.size} 
                                                 productName={reply.product.product_name} 
                                                 url={reply.product.product_url} 
