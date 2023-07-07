@@ -24,13 +24,13 @@ const HomePage = () => {
                 <Container fluid='true' className='justify-content-center'>
                     <Container>
                         <Row className='justify-content-center'>
-                            <Col xs={12} sm={12} md={12} lg={4} xl={4} className='card-column'>
+                            <Col xs={12} sm={10} md={8} lg={4} xl={4} className='card-column'>
                                 <GloveCalc />
                             </Col >
-                            <Col xs={12} sm={12} md={12} lg={4} xl={4} className='card-column'>
+                            <Col xs={12} sm={10} md={8} lg={4} xl={4} className='card-column'>
                                 <BatCalc />
                             </Col >
-                            <Col xs={12} sm={12} md={12} lg={4} xl={4} className='card-column'>
+                            <Col xs={12} sm={10} md={8} lg={4} xl={4} className='card-column'>
                                 <LeagueFinder />
                             </Col>
                         </Row>
