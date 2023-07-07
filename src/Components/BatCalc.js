@@ -101,10 +101,11 @@ const BatCalc = () => {
     }
 
     return (
-        <Card className='generic-card h-100'>
+        <Card className='generic-card h-100 shadow-lg'>
             <Card.Header className='text-center generic-card-header'>
                 <h4 className='card-name'>Bat Calculator</h4>
             </Card.Header>
+            <Container fluid='true'><hr style={{border:'1px solid #a42f2c'}} /></Container>
             <Card.Body className='justify-content-center text-center'>
                 <Form>
                     <Row className='text-center justify-content-center input-row-top pb-4'>

@@ -130,10 +130,11 @@ const LeagueFinder = () => {
         </Card>
       </Modal>
 
-      <Card className='generic-card h-100'>
+      <Card className='generic-card h-100 shadow=lg'>
         <Card.Header className='generic-card-header text-center'>
           <h4 className='card-name'>League Finder</h4>
         </Card.Header>
+        <Container fluid='true'><hr style={{border:'1px solid #a42f2c'}} /></Container>
         <Card.Body>
           <Form>
             <Row className='text-center justify-content-center input-row-top'>
