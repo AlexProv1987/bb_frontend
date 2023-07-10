@@ -9,7 +9,7 @@ import { useState } from 'react';
 import axiosBaseURL from '../http';
 import { faPhoneVolume, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { modalStyles } from '../Styles/ModalStyles'
 import LoadIcon from './LoadingIcon';
 
 const LeagueFinder = () => {
@@ -21,22 +21,6 @@ const LeagueFinder = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
   Modal.setAppElement("#root")
-
-  const customStyles = {
-    overlay: {
-      overflowY: "scroll",
-    },
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      backgroundColor: '#a42f2c',
-      maxHeight: "80%",
-    },
-  };
 
   function closeModal() {
     setIsOpen(false);
@@ -94,7 +78,6 @@ const LeagueFinder = () => {
       }).then((response) => {
         setIsLoading(false)
         setIsOpen(true)
-        console.log(response.data)
         setLeagueOptions(response.data.places)
       }).catch(function (error) {
         if (error.response) {
@@ -108,7 +91,7 @@ const LeagueFinder = () => {
   return (
     <Container className='h-100 league'>
       <Modal isOpen={isOpen}
-        style={customStyles}>
+        style={modalStyles}>
         <Card className='generic-card h-100 league'>
           <Card.Header className='generic-card-header'>
             <h4 className='card-name'>Leagues Within 25 Miles</h4>
@@ -147,10 +130,11 @@ const LeagueFinder = () => {
         </Card>
       </Modal>
 
-      <Card className='generic-card h-100'>
+      <Card className='generic-card h-100 shadow=lg'>
         <Card.Header className='generic-card-header text-center'>
           <h4 className='card-name'>League Finder</h4>
         </Card.Header>
+        <Container fluid='true'><hr style={{border:'1px solid #a42f2c'}} /></Container>
         <Card.Body>
           <Form>
             <Row className='text-center justify-content-center input-row-top'>

@@ -13,22 +13,18 @@ export function GetIntenger(delim, vals, index){
 
 export function ArraySum(valList, initial){
     let sum = initial
-    console.log(valList)
     valList.forEach(val=>{
         sum+=val
     })
-    console.log(sum)
     return sum;
 }
 
 export function ConvertUnitOfMeasure(val, convertRate){
     let converted = val * convertRate;
-    console.log(converted)
     return converted;
 }
 
 export function CheckNumber(val,max){
-    console.log(val)
     if (val <= max){
         return val;
     }
