@@ -76,7 +76,7 @@ const GloveCalc = () => {
               <option value="" disabled selected hidden={true}>Position</option>
               <option value="outfield">Outfield</option>
               <option value="infield">Infield</option>
-              <option value="1st base">1st base</option>
+              <option value="1st base">1st Base</option>
               <option value="catcher">Catcher</option>
             </select>
           </Row>
