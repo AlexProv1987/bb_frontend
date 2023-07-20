@@ -1,8 +1,14 @@
 html,body{
-   margin: 0;
-   height: 100%;
+   margin: 0 !important;
+   height: 100vh !important;
 }
-
+#root{
+  min-height: 100vh;
+}
+.main-container{
+  min-height: 100vh;
+  overflow:auto;
+}
 /*HOMEPAGE CSS*/
 .header-col{
   padding-left:33px;
@@ -29,7 +35,11 @@ html,body{
   padding-inline-end: 90px;
   position:relative;
 }
-
+#input-question::placeholder {
+  color: white !important;
+  opacity: 1 !important;
+  font-weight: normal !important;
+}
 .form{
   position: relative;
 }
@@ -141,6 +151,11 @@ html,body{
   border-radius: 45px;
 }
 
+.card-input::placeholder {
+  color: white !important;
+  opacity: 1 !important;
+  font-weight: normal !important;
+}
 .card-input:focus {
   background-color: #a42f2c;
 }
@@ -156,12 +171,6 @@ html,body{
 
 .input-row-bottom {
   padding-bottom: 40px !important;
-}
-
-::placeholder {
-  color: white !important;
-  opacity: 1 !important;
-  font-weight: normal !important;
 }
 
 .reply-row {
@@ -266,6 +275,26 @@ html,body{
   cursor:pointer;
 }
 
+/*START ABOUT FORM CSS*/
+.about-form-field{
+  border-top: none;
+  border-right: none;
+  border-left:none;
+  border-color: #a42f2c;
+  width: 100%;
+}
+
+.about-form-field:focus{
+  outline: none;
+  box-shadow: 0 8px 6px -6px #a42f2c;
+  background-color: white;
+}
+
+.about-form-field::placeholder{
+  font-family: 'Bradley Hand, cursive';
+  font-size: 16px;
+}
+/*START ABOUT FORM CSS*/
 
 
 
