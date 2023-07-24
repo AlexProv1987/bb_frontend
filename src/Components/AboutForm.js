@@ -107,7 +107,7 @@ const AboutForm = () => {
                     </Row>
                     <Row className='text-center mb-3' style={{ paddingTop: '60px' }}>
                         <Col>
-                            {loading ? <LoadingIcon /> : <Button type='submit' className='get-button' onClick={SubmitForm}>Send</Button>}
+                            {loading ? <LoadingIcon height='30' width='30' /> : <Button type='submit' className='get-button' onClick={SubmitForm}>Send</Button>}
                         </Col>
                     </Row>
                 </Form>

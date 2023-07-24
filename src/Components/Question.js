@@ -82,7 +82,7 @@ const Question = () => {
                         </div>
                     </div>
                     {
-                        isLoading ? <Container className='reply-row'><LoadIcon /></Container> :
+                        isLoading ? <Container className='reply-row'><LoadIcon height='40' width='40'/></Container> :
                             answer.length !== 0 ? <Container className='reply-row' style={{ backgroundImage: `url(${Paper})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
                                 <Row className='d-flex justify-content-center reply-text'>
                                     <Col className='reply-column text-wrap d-flex justify-content-center' style={{ alignSelf: 'flex-start' }}>
