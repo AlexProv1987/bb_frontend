@@ -56,7 +56,7 @@ const AboutForm = () => {
             <Container>
                 <Row className='d-flex text-center'>
                     <Col>
-                        <h3 style={{ color: '#a42f2c', fontWeight: 'bold', fontFamily: 'Bradley Hand, cursive' }}>Do you want to be a sponsor?</h3>
+                        <h3 style={{ color: '#a42f2c', fontWeight: 'bold',}}>Do you want to be a sponsor?</h3>
                     </Col>
                 </Row>
             </Container>
