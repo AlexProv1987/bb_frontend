@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import NavBar from './Components/NavBar';
 import HomePage from "./Pages/HomePage";
 import About from './Pages/About';
