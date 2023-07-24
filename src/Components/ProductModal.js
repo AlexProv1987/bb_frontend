@@ -22,15 +22,16 @@ const ProductModal = (props) => {
                         <h4>Suggested Product</h4>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
+                <Row className='justify-content-center'>
+                    <Col sm={4} md={6}>
                         <h6>Size Range: {props.size}</h6>
                     </Col>
+                    {props.extra && <Col sm={4} md={6}><h6>{props.extraName}: {props.extra}</h6></Col>}
                 </Row>
             </Container>
             <Container fluid='true'><hr style={{border:'1px solid #a42f2c'}} /></Container>
             <Container className='product-img-container'>
-                <Row>
+                <Row className='justify-content-center'>
                     <Col className='text-center'>
                         <img className='product-img' src={props.img} alt='product-img' />
                     </Col>
@@ -61,7 +62,7 @@ const ProductModal = (props) => {
             </Container>
             <Container className='product-btn-container'>
                 <Row className='text-center pb-4 pt-4'>
-                    <Col><a className="text-decoration-none text-light" href={props.url} target="_blank" rel="noopener noreferrer"><button className='get-button'>View Product</button></a></Col>
+                    <Col><a className="text-decoration-none text-light" href={props.url} target="_blank" rel="noopener noreferrer"><button className='get-button'>View</button></a></Col>
                 </Row>
             </Container>
         </Modal>

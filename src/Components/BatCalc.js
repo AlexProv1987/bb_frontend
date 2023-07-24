@@ -151,6 +151,8 @@ const BatCalc = () => {
                                 vendor={reply.product.product_vendor}
                                 price={reply.product.product_price}
                                 reviews={reply.product.product_reviews}
+                                extra={reply.bat_drop}
+                                extraName='Drop'
                             />}
                         </Col>
                     </Container>
