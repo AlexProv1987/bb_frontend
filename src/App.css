@@ -295,7 +295,8 @@ html,body{
   border-top: none;
   border-right: none;
   border-left:none;
-  border-color: #a42f2c;
+  border-radius: 0;
+  border-bottom-color: #a42f2c !important;
   width: 100%;
 }
 
