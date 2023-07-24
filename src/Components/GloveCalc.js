@@ -96,7 +96,7 @@ const GloveCalc = () => {
         </Container>
         <Row className='text-center justify-content-center'>
           <Col className='card-btn-col'>
-            {isLoading ? <LoadIcon /> : <Button type='submit' onClick={HandleGloveSubmit} className='get-button'>Calculate</Button>}
+            {isLoading ? <LoadIcon height='30' width='30'/> : <Button type='submit' onClick={HandleGloveSubmit} className='get-button'>Calculate</Button>}
           </Col>
         </Row>
         </Form>

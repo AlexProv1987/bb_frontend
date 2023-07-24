@@ -99,8 +99,6 @@ html,body{
 /*LOAD ICON CSS*/
 .img-load-icon{
   animation: rotation 2s infinite linear;
-  width:10%;
-  height:10%;
 }
 @keyframes rotation {
   from {

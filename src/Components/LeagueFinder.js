@@ -150,7 +150,7 @@ const LeagueFinder = () => {
             </Container>
             <Row className='text-center justify-content-center'>
               <Col className='card-btn-col'>
-                {isLoading ? <LoadIcon /> : <Button type='submit' onClick={HandleLeagueSubmit} className='get-button'>Find League</Button>}
+                {isLoading ? <LoadIcon height='30' width='30' /> : <Button type='submit' onClick={HandleLeagueSubmit} className='get-button'>Find League</Button>}
               </Col>
             </Row>
           </Form>
