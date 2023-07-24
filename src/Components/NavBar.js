@@ -11,7 +11,7 @@ const NavBar = () => {
       <Container fluid={true}>
         <Navbar.Brand>
         <img
-              src="./McLdkBkca.png"
+              src="./icon_white.svg"
               width="30"
               height="30"
               className="d-inline-block align-top"
