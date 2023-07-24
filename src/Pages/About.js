@@ -12,9 +12,9 @@ const About = () => {
                     </Col>
                 </Row>
             </Container>
-            <Container fluid='true' style={{paddingTop:'20px', paddingBottom:'20px'}}>
+            <Container fluid='true' style={{paddingTop:'20px', paddingBottom:'20px', paddingLeft:'15px', paddingRight:'15px'}}>
                 <Row className='text-center justify-content-center'>
-                    <Col md={6} xl={6} sm={6}>
+                    <Col md={10} xl={8} sm={6}>
                         <p className='text-wrap' style={{fontSize:'18px', fontFamily: 'Bradley Hand, cursive', textAlign:'left'}}>
                             Baseball Oracle℠ is an AI-powered platform that guides the next generation of baseball parents, coaches,
                             and players online by answering <u>EVERY</u> baseball question. Not only does our
@@ -26,11 +26,10 @@ const About = () => {
                     </Col>
                 </Row>
                 </Container>
-                {/* center this up */}
-                <Container fluid='true' style={{paddingTop:'40px', paddingBottom:'20px'}}>
-                <Row className='text-center'>
-                    <Col md={6} xl={12} sm={6}>
-                    <p style={{fontFamily: 'Bradley Hand, cursive' }}><span style={{color:'red', paddingRight:'10px'}}>Disclaimer:</span>Baseball Oracle℠ provides general guidelines for baseball rules and regulations but does not have specific rules for your league.</p>
+                <Container fluid='true' style={{paddingTop:'40px', paddingBottom:'20px', paddingLeft:'15px', paddingRight:'15px'}}>
+                <Row className='text-center justify-content-center'>
+                    <Col md={10} xl={8} sm={6}>
+                    <p style={{fontFamily: 'Bradley Hand, cursive',textAlign:'left' }}><span style={{color:'red', paddingRight:'10px'}}>Disclaimer:</span>Baseball Oracle℠ provides general guidelines for baseball rules and regulations but does not have specific rules for your league.</p>
                     </Col>
                 </Row>
                 </Container>
