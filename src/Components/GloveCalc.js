@@ -1,21 +1,20 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
 import axiosBaseURL from '../http';
 import Container from 'react-bootstrap/esm/Container';
 import LoadIcon from './LoadingIcon';
-
+import ProductModal from "./ProductModal";
 const GloveCalc = () => {
 
   const regex = /^[0-9\b]+$/;
   const [position, setPosition] = useState('');
   const [age, setAge] = useState('')
-  const [size, setSize] = useState('')
+  const [reply, setReply] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-
   const HandleBackSpace = (event) => {
     if (event.key === 'Backspace') {
       switch (event.target.name) {
@@ -52,20 +51,21 @@ const GloveCalc = () => {
           age: age
         },
       }).then((response) => {
-        setSize(response.data.size)
+        setReply(response.data)
         setIsLoading(false)
       }).catch(function (error) {
-        setSize("Please try Again..")
+        setReply("Please try Again..")
         setIsLoading(false)
       });
     }
   };
 
   return (
-    <Card className='generic-card h-100'>
+    <Card className='generic-card h-100 shadow-lg'>
       <Card.Header className='text-center generic-card-header'>
         <h4 className='card-name'>Glove Calculator</h4>
       </Card.Header>
+      <Container fluid='true'><hr style={{border:'1px solid #a42f2c'}} /></Container>
       <Card.Body className='text-center justify-content-center'>
         <Form>
           <Row className='text-center justify-content-center input-row-top'>
@@ -76,17 +76,27 @@ const GloveCalc = () => {
               <option value="" disabled selected hidden={true}>Position</option>
               <option value="outfield">Outfield</option>
               <option value="infield">Infield</option>
-              <option value="1st base">1st base</option>
+              <option value="1st base">1st Base</option>
+              <option value="catcher">Catcher</option>
             </select>
           </Row>
         <Container className='card-reply-row text-center'>
           <Col className='pb-4'>
-            {size.length !== 0 && <p className='reply-text'><b>{size}"</b></p>}
+            {reply.size === 'none found' ? <p className='reply-text'><b>No size found. Please ask Coach</b></p> : !isLoading && reply.length !==0 && 
+                                              <ProductModal 
+                                                size={reply.size} 
+                                                productName={reply.product.product_name} 
+                                                url={reply.product.product_url} 
+                                                img={reply.product.product_img}
+                                                vendor={reply.product.product_vendor}
+                                                price={reply.product.product_price}
+                                                reviews={reply.product.product_reviews}
+                                                />}
           </Col>
         </Container>
         <Row className='text-center justify-content-center'>
           <Col className='card-btn-col'>
-            {isLoading ? <LoadIcon /> : <Button type='submit' onClick={HandleGloveSubmit} className='get-button'>Calculate</Button>}
+            {isLoading ? <LoadIcon height='30' width='30'/> : <Button type='submit' onClick={HandleGloveSubmit} className='get-button'>Calculate</Button>}
           </Col>
         </Row>
         </Form>
