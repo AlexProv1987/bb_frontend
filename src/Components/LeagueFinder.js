@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import axiosBaseURL from '../http';
-import { faPhoneVolume, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneVolume, faGlobe, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { modalStyles } from '../Styles/ModalStyles'
 import LoadIcon from './LoadingIcon';
@@ -63,7 +63,7 @@ const LeagueFinder = () => {
 
   const HandleLeagueSubmit = (event) => {
     if (zip.length !== 0 && age.length !== 0) {
-      if (errorMessage.length !==0){
+      if (errorMessage.length !== 0) {
         setErrorMessage("")
       }
       setIsLoading(true)
@@ -90,51 +90,53 @@ const LeagueFinder = () => {
 
   return (
     <Container className='h-100 league'>
-      <Modal isOpen={isOpen}
-        style={modalStyles}>
-        <Card className='generic-card h-100 league'>
-          <Card.Header className='generic-card-header'>
-            <h4 className='card-name'>Leagues Within 25 Miles</h4>
-          </Card.Header>
-          <Container fluid='true'><hr /></Container>
-          <Card.Body>
-            {leagueOptions.length !== 0 ? leagueOptions.map((item, index) => (
-              <Container className='p-2' key={index}>
-                <Row>
-                  <Col>{item.name}</Col>
-                </Row>
-                <Row >
-                  <Col>{item.address}</Col>
-                </Row>
-                <Row>
-                  <Col><a className="text-dark" href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a></Col>
-                </Row>
-                <Row>
-                  <Col><a className="text-decoration-none text-dark" href={"tel:" + item.phone}><FontAwesomeIcon icon={faPhoneVolume} /> {item.phone}</a></Col>
-                </Row>
-              </Container>
-            )) : <Container className='p-2'>
-              <Row>
-                <Col><b>We are sorry, it appears there are no leagues in your area.</b></Col>
-              </Row>
-            </Container>}
-          </Card.Body>
-          <Container fluid='true'><hr /></Container>
-          <Container>
-            <Row className='pt-2 text-center'>
-              <Col className='pb-4'>
-                <button className='get-button' onClick={closeModal}>Close</button>
-              </Col>
+
+      <Modal isOpen={isOpen} style={modalStyles}>
+        <Container className='d-flex align-items-end flex-column p-0'>
+          <div className="mt-auto"><FontAwesomeIcon className='product-close-fa' onClick={closeModal} icon={faCircleXmark} size="xl" style={{ color: "#a42f2c", }} /></div>
+        </Container>
+        <Container className='product-header-container text-center'>
+          <Row>
+            <Col>
+              <h4>Leagues Within 25 Miles</h4>
+            </Col>
+          </Row>
+        </Container>
+        <Container fluid='true'><hr style={{ border: '1px solid #a42f2c' }} /></Container>
+        {leagueOptions.length !== 0 ? leagueOptions.map((item, index) => (
+          <Container className='p-2' key={index}>
+            <Row>
+              <Col style={{fontSize:'18px'}}>{item.name}</Col>
+            </Row>
+            <Row >
+              <Col>{item.address}</Col>
+            </Row>
+            <Row>
+              <Col><a className="text-dark text-decoration-none" href={item.website} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGlobe}/> Website</a></Col>
+            </Row>
+            <Row>
+              <Col><a className="text-decoration-none text-dark" href={"tel:" + item.phone}><FontAwesomeIcon icon={faPhoneVolume}/> {item.phone}</a></Col>
             </Row>
           </Container>
-        </Card>
+        )) : <Container className='p-2'>
+          <Row>
+            <Col><b>We are sorry, it appears there are no leagues in your area.</b></Col>
+          </Row>
+        </Container>}
+        <Container fluid='true'><hr style={{ border: '1px solid #a42f2c' }} /></Container>
+        <Container className='product-btn-container'>
+          <Row className='text-center pb-4 pt-4'>
+            <Col> <button className='get-button' onClick={closeModal}>Close</button></Col>
+          </Row>
+        </Container>
       </Modal>
+
 
       <Card className='generic-card h-100 shadow=lg'>
         <Card.Header className='generic-card-header text-center'>
           <h4 className='card-name'>League Finder</h4>
         </Card.Header>
-        <Container fluid='true'><hr style={{border:'1px solid #a42f2c'}} /></Container>
+        <Container fluid='true'><hr style={{ border: '1px solid #a42f2c' }} /></Container>
         <Card.Body>
           <Form>
             <Row className='text-center justify-content-center input-row-top'>
