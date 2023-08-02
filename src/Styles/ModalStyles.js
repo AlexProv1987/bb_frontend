@@ -11,6 +11,7 @@ export const modalStyles = {
         transform: 'translate(-50%, -50%)',
         backgroundColor: 'white',
         maxHeight: "80%",
+        maxWidth: "95%",
         borderRadius: "10px",
         border:'1px solid #a42f2c',
     },
