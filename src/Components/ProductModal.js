@@ -3,10 +3,13 @@ import {Container, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { modalStyles } from '../Styles/ModalStyles'
+import { modalStyles } from '../Styles/ModalStyles';
+import { Rating } from 'react-simple-star-rating';
+import { GetFloat } from '../Helpers/helpers';
 const ProductModal = (props) => {
     const [isOpen, setIsOpen] = useState(true)
     Modal.setAppElement("#root")
+
     const closeModal = () => {
         setIsOpen(false);
     }
@@ -23,7 +26,7 @@ const ProductModal = (props) => {
                     </Col>
                 </Row>
                 <Row className='justify-content-center'>
-                    <Col sm={4} md={6}>
+                    <Col sm={4} md={8}>
                         <h6>Size Range: {props.size}</h6>
                     </Col>
                     {props.extra && <Col sm={4} md={6}><h6>{props.extraName}: {props.extra}</h6></Col>}
@@ -56,7 +59,12 @@ const ProductModal = (props) => {
                 </Row>
                 <Row>
                     <Col className='text-center'>
-                        <p>{props.reviews}</p>
+                    <Rating
+                    readonly={true} 
+                    allowFraction={true} 
+                    initialValue={GetFloat(" ", props.reviews, 0)} 
+                    size={25} 
+                    fillColorArray={['#f17a45', '#f19745', '#f1a545', '#f1b345', '#f1d045']} />
                     </Col>
                 </Row>
             </Container>

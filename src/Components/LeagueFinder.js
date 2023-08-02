@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import axiosBaseURL from '../http';
-import { faPhoneVolume, faGlobe, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneVolume, faGlobe, faCircleXmark,faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { modalStyles } from '../Styles/ModalStyles'
 import LoadIcon from './LoadingIcon';
@@ -98,7 +98,7 @@ const LeagueFinder = () => {
         <Container className='product-header-container text-center'>
           <Row>
             <Col>
-              <h4>Leagues Within 25 Miles</h4>
+              <h4 style={{color:'#a42f2c'}}>Leagues Within 25 Miles</h4>
             </Col>
           </Row>
         </Container>
@@ -106,13 +106,13 @@ const LeagueFinder = () => {
         {leagueOptions.length !== 0 ? leagueOptions.map((item, index) => (
           <Container className='p-2' key={index}>
             <Row>
-              <Col style={{fontSize:'18px'}}>{item.name}</Col>
+              <Col style={{fontSize:'18px',color:'#a42f2c'}}>{item.name}</Col>
             </Row>
             <Row >
-              <Col>{item.address}</Col>
+              <Col><FontAwesomeIcon icon={faLocationDot}/> {item.address}</Col>
             </Row>
             <Row>
-              <Col><a className="text-dark text-decoration-none" href={item.website} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGlobe}/> Website</a></Col>
+              <Col><a className="text-decoration-none text-dark" href={item.website} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGlobe}/> Website</a></Col>
             </Row>
             <Row>
               <Col><a className="text-decoration-none text-dark" href={"tel:" + item.phone}><FontAwesomeIcon icon={faPhoneVolume}/> {item.phone}</a></Col>

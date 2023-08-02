@@ -1,6 +1,4 @@
 export function GetIntenger(delim, vals, index){
-    //this is horrid to loop over each time to split if this was a large array, 
-    //leaving for now since its a singular usecase atm
     let returnVal = vals.split(delim)
     let parsed_val = parseInt(returnVal[index])
     if(isNaN(parsed_val)){
@@ -11,6 +9,17 @@ export function GetIntenger(delim, vals, index){
     }
 }
 
+export function GetFloat(delim, vals,index){
+    let returnVal = vals.split(delim)
+    let parsed_val = parseFloat(returnVal[index])
+    if(isNaN(parsed_val)){
+        return 0;
+    }
+    else{
+        console.log(parsed_val)
+        return parsed_val;
+    }
+}
 export function ArraySum(valList, initial){
     let sum = initial
     valList.forEach(val=>{
